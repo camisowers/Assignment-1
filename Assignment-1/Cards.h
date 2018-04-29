@@ -48,6 +48,9 @@ public:
 	// Useful if you want to sort the cards.
 	bool operator < (Card card2) const;
 
+	// Cout the content of the added card.
+	void print_card() const;
+
 private:
 	suit_t suit;
 	rank_t rank;
@@ -63,11 +66,14 @@ public:
 	void add_card(Card new_card);
 
 	// Accessor
-	int return_total();
+	int get_total() const;
+	
+	// Cout the contents of the Hand.
+	void print_hand() const;
 	
 
 private:
-	std::vector <Player> player_hand;
+	std::vector <Card> player_hand;
 	int total;
 };
 
@@ -83,7 +89,7 @@ public:
 	void loss(int bet);
 
 	//Accessor 
-	int return_money();
+	int get_money() const;
 
 
 private:

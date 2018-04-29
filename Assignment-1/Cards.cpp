@@ -1,13 +1,7 @@
 #include "cards.h"
 #include <cstdlib>
 #include <iostream>
-
-/*
-You might or might not need these two extra libraries
 #include <iomanip>
-#include <algorithm>
-*/
-
 
 /* *************************************************
 Card class
@@ -180,7 +174,12 @@ int Card::get_rank() const {
 bool Card::operator < (Card card2) const {
 	return rank < card2.rank;
 }
-
+ 
+// Cout the contents of a card
+void Card::print_card() const
+{
+	cout << swtw(10) << get_spanish_rank << " de " << get_spanish_suit << setw(10) << "( " << get_english_rank << " of " << get_english_suit " )\n";
+}
 
 
 /* *************************************************
@@ -202,10 +201,19 @@ void Hand::add_card(Card new_card)
 }
 
 // Accessor. Returns total of hand.
-int Hand::return_total()
+int Hand::get_total() const
 {
 	return total;
 }
+
+void Hand::print_hand() const
+{
+	for (int i = 0; i < player_hand.size(); i++)
+	{
+		print_card();
+	}
+}
+
 
 /* *************************************************
 Player class
@@ -230,7 +238,7 @@ void Player::loss(int bet)
 	money -= bet;
 }
 
-int Player::return_money()
+int Player::get_money() const
 {
 	return money;
 }
