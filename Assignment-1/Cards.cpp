@@ -108,15 +108,63 @@ string Card::get_spanish_rank() const {
 
 
 // Accessor: returns a string with the suit of the card in English 
-// This is just a stub! Modify it to your liking.
 string Card::get_english_suit() const {
-	return "";
+	string suitName_english;
+	switch (suit) {
+	case OROS:
+		suitName_english = "golden coins";
+		break;
+	case COPAS:
+		suitName_english = "cups";
+		break;
+	case ESPADAS:
+		suitName_english = "swords";
+		break;
+	case BASTOS:
+		suitName_english = "clubs";
+		break;
+	default: break;
+	}
+	return suitName_english;
 }
 
 // Accessor: returns a string with the rank of the card in English 
-// This is just a stub! Modify it to your liking.
 string Card::get_english_rank() const {
-	return "";
+	string rankName_english;
+	switch (rank) {
+	case AS:
+		rankName_english = "Ace";
+		break;
+	case DOS:
+		rankName_english = "Two";
+		break;
+	case TRES:
+		rankName_english = "Three";
+		break;
+	case CUATRO:
+		rankName_english = "Four";
+		break;
+	case CINCO:
+		rankName_english = "Five";
+		break;
+	case SEIS:
+		rankName_english = "Six";
+		break;
+	case SIETE:
+		rankName_english = "Seven";
+		break;
+	case SOTA:
+		rankName_english = "Squire";
+		break;
+	case CABALLO:
+		rankName_english = "Knight";
+		break;
+	case REY:
+		rankName_english = "King";
+		break;
+	default: break;
+	}
+	return rankName_english;
 }
 
 
@@ -138,11 +186,51 @@ bool Card::operator < (Card card2) const {
 /* *************************************************
 Hand class
 ************************************************* */
-// Implemente the member functions of the Hand class here.
 
+/* Default constructor for Hand Class. Initializes private variables.
+No need to initialize vector again. */
+Hand::Hand()
+{
+	total = 0;
+}
 
+// Adds new card to the player's hand and add card value to total.
+void Hand::add_card(Card new_card)
+{
+	player_hand.push_back(new_card);
+	total += new_card.get_rank;
+}
+
+// Accessor. Returns total of hand.
+int Hand::return_total()
+{
+	return total;
+}
 
 /* *************************************************
 Player class
 ************************************************* */
-// Implemente the member functions of the Player class here.
+
+/* Default constructor for Player Class.
+Initializes private variables.*/
+Player::Player(int m)
+{
+	money = m;			//starting value
+}
+
+// Adds bet value to player's total money if they win a hand.
+void Player::win(int bet)
+{
+	money += bet;		
+}
+
+// Subtracts bet value from player's total money if they loose a hand.
+void Player::loss(int bet)
+{
+	money -= bet;
+}
+
+int Player::return_money()
+{
+	return money;
+}
