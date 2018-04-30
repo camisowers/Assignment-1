@@ -178,7 +178,7 @@ bool Card::operator < (Card card2) const {
 // Cout the contents of a card
 void Card::print_card() const
 {
-	cout << swtw(10) << get_spanish_rank << " de " << get_spanish_suit << setw(10) << "( " << get_english_rank << " of " << get_english_suit " )\n";
+	cout << setw(10) << get_spanish_rank()<< " de " << get_spanish_suit() << setw(10) << "( " << get_english_rank() << " of " << get_english_suit() << " )\n";
 }
 
 
@@ -197,7 +197,7 @@ Hand::Hand()
 void Hand::add_card(Card new_card)
 {
 	player_hand.push_back(new_card);
-	total += new_card.get_rank;
+	total += new_card.get_rank();
 }
 
 // Accessor. Returns total of hand.
@@ -210,8 +210,8 @@ void Hand::print_hand() const
 {
 	for (int i = 0; i < player_hand.size(); i++)
 	{
-		print_card();
-		cout << "\n";
+		Card current_card;				//need to fix --> fixed!
+		current_card.print_card();		//figure out how to access card info
 	}
 }
 

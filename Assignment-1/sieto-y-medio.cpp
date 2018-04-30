@@ -6,12 +6,16 @@
 #include <cstdlib>
 #include <iomanip>
 #include "cards.h"
+#include "cards.cpp"
 using namespace std;
 
 // Global variables
 int starting_amount = 100;		// User starts with $100
 int counter = 1;				// Counts number of games
 int dealer_bet = 50;
+
+/* Function declaration. */
+void game_log(Player p1, Hand h1, Hand h2, int bet);
 
 /* This function plays a full game of 7 1/2.
 It couts various messages to the console and prompts user input of whether they would like additional cards. 
@@ -27,7 +31,7 @@ void run_game(Player p1, Player p2)
 	Card p2_c1;			
 	string answer;		//whether player wants another card
 
-	cout << "You have " << p1.get_money << ". Enter bet: ";
+	cout << "You have " << p1.get_money() << ". Enter bet: ";
 	cin >> bet;
 	
 	h1.add_card(p1_c1);
@@ -117,7 +121,7 @@ void game_log(Player p1, Hand h1, Hand h2, int bet)
 	h2.print_hand();
 	fout << "The dealer's total is " << h2.get_total() << ". \n\n";
 	
-	fout "-----------------------------------------------------------\n";
+	fout << "-----------------------------------------------------------\n";
 
 	fout.close();
 }
@@ -128,7 +132,7 @@ int main()
 	Player player1(starting_amount);
 	Player dealer(0);			//dealer has no money, only keep track of loss
 
-	while (player1.get_money > 0 || dealer.get_money <= -900)
+	while (player1.get_money() > 0 || dealer.get_money() <= -900)
 	{
 		run_game(player1, dealer);
 		counter++;

@@ -1,0 +1,12 @@
+
+Game number: 2Money left: 75
+
+Bet: 25
+
+Your cards:
+Your total is 8. 
+
+Dealer's cards: 
+The dealer's total is 7. 
+
+-----------------------------------------------------------
