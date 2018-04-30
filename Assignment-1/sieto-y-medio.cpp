@@ -11,7 +11,7 @@ using namespace std;
 
 // Global variables
 int starting_amount = 100;		// User starts with $100
-int counter = 1;				// Counts number of games
+int counter = 0;				// Counts number of games
 int dealer_bet = 50;
 
 /* Function declaration. */
@@ -22,7 +22,7 @@ It couts various messages to the console and prompts user input of whether they 
 It also displays the hands and totals of each player, and let's the user know if they won or lost, and how much money they have left.
 	game_log() is used in this function
 */
-void run_game(Player p1, Player p2)
+void run_game(Player &p1, Player &p2)				//pass by reference fixed money count
 {
 	Hand h1;			//player's hand
 	Hand h2;			//dealer's hand
@@ -110,7 +110,7 @@ void game_log(Player p1, Hand h1, Hand h2, int bet)
 {
 	ofstream fout;			
 	fout.open("GameLog.txt");			//creates new file the first time used
-	fout << "\n" << setw(10) << "Game number: " << counter << setw(10) << "Money left: " << p1.get_money() << "\n\n";
+	fout << "\n" << setw(10) << "Game number: " << counter << "\nMoney left: " << p1.get_money() << "\n\n";
 	fout << "Bet: " << bet << "\n\n";
 	
 	fout << "Your cards:\n";			//player's hand
