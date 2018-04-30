@@ -108,5 +108,11 @@ int main()
 		counter++;
 	}
 
+	if (player1.get_money() == 0)
+		cout << "You have $0. GAME OVER! \nCome back when you have more money. \nBye!";
+	else if (dealer.get_money() <= -900)
+		cout << "Dealer has lost $900. GAME OVER!";
+
+
 	return 0;
 }
