@@ -114,6 +114,8 @@ void game_log(Player p1, Hand h1, Hand h2, int bet)
 	fout << "The dealer's total is " << h2.get_total() << ". \n\n";
 	
 	fout "-----------------------------------------------------------\n";
+
+	fout.close();
 }
 
 int main() 
