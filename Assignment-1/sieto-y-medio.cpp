@@ -4,17 +4,19 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include <iomanip>
 #include "cards.h"
 using namespace std;
 
 // Global variables
 int starting_amount = 100;		// User starts with $100
-int counter = 0;				// Counts number of games
+int counter = 1;				// Counts number of games
 int dealer_bet = 50;
 
 /* This function plays a full game of 7 1/2.
 It couts various messages to the console and prompts user input of whether they would like additional cards. 
 It also displays the hands and totals of each player, and let's the user know if they won or lost, and how much money they have left.
+	game_log() is used in this function
 */
 void run_game(Player p1, Player p2)
 {
@@ -94,6 +96,30 @@ void run_game(Player p1, Player p2)
 		}
 	}
 
+	game_log(p1, h1, h2, bet);
+}
+
+/* This function outputs a description of each game played to a text file called "GameLog.txt."
+It states the game number, money at the end of the game, bet, and the cards and totals of each player.
+*/
+void game_log(Player p1, Hand h1, Hand h2, int bet)
+{
+	ofstream fout;			
+	fout.open("GameLog.txt");			//creates new file the first time used
+	fout << "\n" << setw(10) << "Game number: " << counter << setw(10) << "Money left: " << p1.get_money() << "\n\n";
+	fout << "Bet: " << bet << "\n\n";
+	
+	fout << "Your cards:\n";			//player's hand
+	h1.print_hand();
+	fout << "Your total is " << h1.get_total() << ". \n\n";
+
+	fout << "Dealer's cards: \n";		//dealer's hand
+	h2.print_hand();
+	fout << "The dealer's total is " << h2.get_total() << ". \n\n";
+	
+	fout "-----------------------------------------------------------\n";
+
+	fout.close();
 }
 
 int main() 
