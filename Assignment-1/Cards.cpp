@@ -211,6 +211,7 @@ void Hand::print_hand() const
 	for (int i = 0; i < player_hand.size(); i++)
 	{
 		print_card();
+		cout << "\n";
 	}
 }
 
