@@ -19,3 +19,9 @@ I created README.md file on GitHub, not visual studios, so I ran into a little t
 As expected, I had to go back and add two member functions to the Card and Hand classes, print_card and print_hand respectively.
 
 Creating the run_game funciton was a huge commit step in my project. This funciton brought most of my code together to run the game.
+
+I then began to work in an experimental branch "fout" to create the function game_log which would output information to a .txt file. 
+    To avoid a fast forward, I also worked in master branch in the main function.
+    
+I contiuned working in both fout and master, updating README.md and synching it with the GitHub repository, and then when I finished,
+    I merged the fout into the master branch, to implement the successful changes to my project.
