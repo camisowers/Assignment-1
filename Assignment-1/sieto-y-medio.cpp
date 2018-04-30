@@ -36,7 +36,7 @@ void run_game(Player p1, Player p2)
 	cout << "Your total is " << h1.get_total() << ". Do you want another card (y/n)?";
 	cin >> answer;
 
-	while (answer == "y")
+	while (answer == "y")			//repeats everytime user answers 'y' for a new card
 	{
 		Card new_card;
 		h1.add_card(new_card);
@@ -55,7 +55,7 @@ void run_game(Player p1, Player p2)
 	p2_c1.print_card();
 	cout << "The dealer's total is " << h2.get_total() << ".\n";
 
-	while (h2.get_total() < 5.5)
+	while (h2.get_total() < 5.5)			//dealer must get new cards while the total is less than 5.5
 	{
 		Card new_card;
 		h2.add_card(new_card);
@@ -66,37 +66,37 @@ void run_game(Player p1, Player p2)
 		cout << "The dealer's total is " << h2.get_total() << " .\n";
 	}
 
-	if (h1.get_total() > 7.5 && h2.get_total() <= 7.5)
+	if (h1.get_total() > 7.5 && h2.get_total() <= 7.5)			//player busts
 	{
 		p1.loss(bet);
 		cout << "Too bad you lose.\n";
 	}
-	else if (h2.get_total() > 7.5 && h1.get_total() <= 7.5)
+	else if (h2.get_total() > 7.5 && h1.get_total() <= 7.5)		//dealer busts
 	{
 		p1.win(bet);
 		p2.loss(dealer_bet);
 		cout << "You win " << bet << ".\n";
 	} 
-	else if (h1.get_total() <= 7.5 && h2.get_total() <= 7.5)
+	else if (h1.get_total() <= 7.5 && h2.get_total() <= 7.5)	//neither bust
 	{
-		if (h1.get_total() > h2.get_total())
+		if (h1.get_total() > h2.get_total())					//player closer to 7 1/2
 		{
 			p1.win(bet);
 			p2.loss(dealer_bet);
 			cout << "You win " << bet << ".\n";
 		}
-		else if (h1.get_total() < h2.get_total())
+		else if (h1.get_total() < h2.get_total())				//dealer closer to 7 1/2
 		{
 			p1.loss(bet);
 			cout << "Too bad you lose.\n";
 		}
-		else if (h1.get_total() == h2.get_total())
+		else if (h1.get_total() == h2.get_total())				//player and dealer have same total
 		{
 			cout << "Nobody wins! \n";
 		}
 	}
 
-	game_log(p1, h1, h2, bet);
+	game_log(p1, h1, h2, bet);									//output to file
 }
 
 /* This function outputs a description of each game played to a text file called "GameLog.txt."
