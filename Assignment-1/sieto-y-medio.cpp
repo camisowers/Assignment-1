@@ -4,12 +4,13 @@
 #include <vector>
 #include <ctime>
 #include <cstdlib>
+#include <iomanip>
 #include "cards.h"
 using namespace std;
 
 // Global variables
 int starting_amount = 100;		// User starts with $100
-int counter = 0;				// Counts number of games
+int counter = 1;				// Counts number of games
 int dealer_bet = 50;
 
 /* This function plays a full game of 7 1/2.
@@ -94,6 +95,25 @@ void run_game(Player p1, Player p2)
 		}
 	}
 
+	game_log(p1, h1, h2, bet);
+}
+
+void game_log(Player p1, Hand h1, Hand h2, int bet)
+{
+	ofstream fout;
+	fout.open("GameLog.txt");
+	fout << "\n" << setw(10) << "Game number: " << counter << setw(10) << "Money left: " << p1.get_money() << "\n\n";
+	fout << "Bet: " << bet << "\n\n";
+	
+	fout << "Your cards:\n";
+	h1.print_hand();
+	fout << "Your total is " << h1.get_total() << ". \n\n";
+
+	fout << "Dealer's cards: \n";
+	h2.print_hand();
+	fout << "The dealer's total is " << h2.get_total() << ". \n\n";
+	
+	fout "-----------------------------------------------------------\n";
 }
 
 int main() 
